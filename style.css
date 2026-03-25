@@ -1,1 +1,24 @@
 
+# 🚚 LogiData 5000 - Monitoramento de Frota com Big Data
+
+Este projeto simula o monitoramento em tempo real de uma frota de **5.000 caminhões**, demonstrando conceitos de ingestão de dados, otimização de rotas e planos de contingência.
+
+## 🏗️ Arquitetura do Sistema
+O sistema segue uma arquitetura **Client-Side Heavy**:
+1.  **Ingestão**: Simulada via loop de 5.000 objetos JSON contendo Telemetria (Lat, Lon, Vel, Status).
+2.  **Processamento**: O motor `simulation.js` calcula a nova posição de cada veículo a cada 1s (Simulando Processamento de Fluxo/Stream).
+3.  **Visualização**: Renderização dinâmica sobre camadas Leaflet com filtragem de amostragem para performance.
+
+## 🧠 Lógicas Implementadas
+- **Otimização de Rota**: Cada veículo calcula vetores de aproximação para o Porto de Santos (Principal Hub Logístico), simulando algoritmos de menor distância.
+- **Contingência**: Implementado modo de falha que simula perda de pacotes GPS. O sistema retém a "Última Posição Conhecida" (Fallback).
+- **Retenção Histórica**: Armazenamento em memória dos últimos estados para cálculo de trajetória.
+
+## 🚀 Como Executar
+1. Faça o upload destes arquivos para um repositório no GitHub.
+2. Vá em **Settings > Pages**.
+3. Selecione a branch `main` e salve.
+4. Acesse o link gerado pelo GitHub.
+
+## ⚠️ Limitações
+- A simulação roda no navegador do cliente (limite de CPU). Em um cenário real, o processamento de 5.000 streams seria feito via **Apache Kafka** e **Spark**.
